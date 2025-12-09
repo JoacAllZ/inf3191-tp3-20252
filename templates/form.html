@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mise en adoption d'un animal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Mise en adoption d'un animal</h1>
+
+        <form action="/add" method="POST" class="form-adoption">
+
+            <label for="nom">Nom de l'animal :</label>
+            <input type="text" id="nom" name="nom" required minlength="3" maxlength="20">
+
+            <label for="espece">Espèce :</label>
+            <input type="text" id="espece" name="espece" required>
+
+            <label for="race">Race :</label>
+            <input type="text" id="race" name="race" required>
+
+            <label for="age">Âge (en années) :</label>
+            <input type="number" id="age" name="age" min="0" max="30" required>
+
+            <label for="description">Description :</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <label for="courriel">Adresse courriel du propriétaire :</label>
+            <input type="email" id="courriel" name="courriel" required>
+
+            <label for="adresse">Adresse civique :</label>
+            <input type="text" id="adresse" name="adresse" required>
+
+            <label for="ville">Ville :</label>
+            <input type="text" id="ville" name="ville" required>
+
+            <label for="cp">Code postal :</label>
+            <input type="text" id="cp" name="cp" pattern="[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d" required
+                   title="Format canadien (ex: H2X 1Y4)">
+
+            <button type="submit" class="btn btn-large">Mettre l'animal en adoption</button>
+        </form>
+    </div>
+</body>
+</html>
+

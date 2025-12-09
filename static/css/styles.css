@@ -134,3 +134,70 @@ a:hover {
 .reference a:hover {
     color: #2980b9;
 }
+
+.form-adoption {
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+.form-adoption label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    margin-top: 15px;
+    color: #555;
+}
+
+.form-adoption input,
+.form-adoption textarea {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-adoption textarea {
+    resize: vertical;
+}
+
+.form-adoption input:focus,
+.form-adoption textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 4px rgba(52,152,219,0.4);
+}
+
+.form-adoption button {
+    margin-top: 25px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.form-adoption button:hover {
+    background-color: #2980b9;
+}
+
+.form-adoption input:invalid,
+.form-adoption textarea:invalid {
+    border-color: #e74c3c;
+}
+
+.form-adoption input:invalid:focus,
+.form-adoption textarea:invalid:focus {
+    box-shadow: 0 0 4px rgba(231,76,60,0.4);
+}
+

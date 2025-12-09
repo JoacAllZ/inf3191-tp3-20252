@@ -88,21 +88,21 @@ class Database:
         return animaux
 
     def search_animaux(self, terme):
-        term_like = f"%{terme}%"
+        terme_like = f"%{terme}%"
         cursor = self.get_connection().cursor()
         query = """
             SELECT id, nom, espece, race, age, description, courriel, adresse, ville, cp
             FROM animaux
             WHERE id = ?
-               OR nom = ?
-               OR race = ?
-               OR description LIKE ?
+               OR LOWER(nom) LIKE LOWER(?)
+               OR LOWER(race) = LOWER(?)
+               OR LOWER(description) LIKE LOWER(?) 
         """
         try:
             id_val = int(terme)
         except ValueError:
             id_val = -1  
-        cursor.execute(query, (id_val, term, term, term_like))
+        cursor.execute(query, (id_val, terme_like, terme, terme_like))
         all_data = cursor.fetchall()
         animaux = []
         for item in all_data:

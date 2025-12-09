@@ -14,6 +14,7 @@
 
 from flask import Flask
 from flask import render_template
+from flask import request
 from flask import g
 from .database import Database
 
@@ -33,12 +34,15 @@ def close_connection(exception):
     if db is not None:
         db.disconnect()
 
-
 @app.route("/")
 def home():
     db = get_db()
+    terme = request.args.get("q", "").strip()
 
-    animaux = db.get_random_animaux()
+    if terme:
+        animaux = db.search_animaux(terme)
+    else:
+        animaux = db.get_random_animaux()
 
     return render_template("index.html", animaux=animaux)
 
@@ -53,3 +57,7 @@ def animal_detail(animal_id):
     if animal is None:
         return "Animal non trouvé", 404
     return render_template("animal.html", animal=animal)
+
+@app.route("/add")
+def add_animal():
+    return render_template("form.html")
