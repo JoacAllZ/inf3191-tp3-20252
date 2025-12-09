@@ -2,46 +2,79 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mise en adoption d'un animal</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <div class="container">
+    <div class="container-form">
         <h1>Mise en adoption d'un animal</h1>
 
-        <form action="/add" method="POST" class="form-adoption">
+        
+    <form id="form-adoption" method="POST" novalidate>
+        <div class="champ">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" value="{{ form_data.nom or '' }}">
+            <div class="message-erreur hidden" id="nomErr">Le nom est obligatoire.</div>
+        </div>
 
-            <label for="nom">Nom de l'animal :</label>
-            <input type="text" id="nom" name="nom" required minlength="3" maxlength="20">
+        <div class="champ">
+            <label for="espece">Espèce</label>
+            <input type="text" id="espece" name="espece" value="{{ form_data.espece or '' }}">
+            <div class="message-erreur hidden" id="especeErr">L'espèce est obligatoire.</div>
+        </div>
 
-            <label for="espece">Espèce :</label>
-            <input type="text" id="espece" name="espece" required>
+        <div class="champ">
+            <label for="race">Race</label>
+            <input type="text" id="race" name="race" value="{{ form_data.race or '' }}">
+            <div class="message-erreur hidden" id="raceErr">La race est obligatoire.</div>
+        </div>
 
-            <label for="race">Race :</label>
-            <input type="text" id="race" name="race" required>
+        <div class="champ">
+            <label for="age">Âge</label>
+            <input type="number" id="age" name="age" value="{{ form_data.age or '' }}">
+            <div class="message-erreur hidden" id="ageErr">L'âge doit être un nombre positif.</div>
+        </div>
 
-            <label for="age">Âge (en années) :</label>
-            <input type="number" id="age" name="age" min="0" max="30" required>
+        <div class="champ">
+            <label for="description">Description</label>
+            <textarea id="description" name="description">{{ form_data.description or '' }}</textarea>
+            <div class="message-erreur hidden" id="descriptionErr">La description est obligatoire.</div>
+        </div>
 
-            <label for="description">Description :</label>
-            <textarea id="description" name="description" rows="4" required></textarea>
+        <div class="champ">
+            <label for="courriel">Courriel</label>
+            <input type="text" id="courriel" name="courriel" value="{{ form_data.courriel or '' }}">
+            <div class="message-erreur hidden" id="courrielErr">Le courriel doit être valide.</div>
+        </div>
 
-            <label for="courriel">Adresse courriel du propriétaire :</label>
-            <input type="email" id="courriel" name="courriel" required>
+        <div class="champ">
+            <label for="adresse">Adresse</label>
+            <input type="text" id="adresse" name="adresse" value="{{ form_data.adresse or '' }}">
+            <div class="message-erreur hidden" id="adresseErr">L'adresse est obligatoire.</div>
+        </div>
 
-            <label for="adresse">Adresse civique :</label>
-            <input type="text" id="adresse" name="adresse" required>
+        <div class="champ">
+            <label for="ville">Ville</label>
+            <input type="text" id="ville" name="ville" value="{{ form_data.ville or '' }}">
+            <div class="message-erreur hidden" id="villeErr">La ville est obligatoire.</div>
+        </div>
 
-            <label for="ville">Ville :</label>
-            <input type="text" id="ville" name="ville" required>
-
-            <label for="cp">Code postal :</label>
-            <input type="text" id="cp" name="cp" pattern="[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d" required
-                   title="Format canadien (ex: H2X 1Y4)">
-
-            <button type="submit" class="btn btn-large">Mettre l'animal en adoption</button>
-        </form>
+        <div class="champ">
+            <label for="cp">Code postal</label>
+            <input type="text" id="cp" name="cp" value="{{ form_data.cp or '' }}">
+            <div class="message-erreur hidden" id="cpErr">Le code postal doit être valide.</div>
+        </div>
+        {% for erreur in erreurs %}
+            <div class="message-erreur {{ 'hidden' if not erreur else '' }}"> 
+                {{ erreur }}
+            </div>
+         {% endfor %}
+        <button type="submit" class="btn">Soumettre</button>
+    </form>
     </div>
+    <a href="{{ url_for('home') }}"  class="btn btn-large">Retour à l'accueil</a>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
 

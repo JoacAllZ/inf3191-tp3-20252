@@ -58,6 +58,39 @@ def animal_detail(animal_id):
         return "Animal non trouvé", 404
     return render_template("animal.html", animal=animal)
 
-@app.route("/add")
+@app.route("/add", methods=["GET", "POST"])
 def add_animal():
-    return render_template("form.html")
+    erreurs = {}
+    form_data = {}
+    db = get_db()
+
+    if request.method == "POST":
+        nom = request.form.get("nom", "").strip()
+        espece = request.form.get("espece", "").strip()
+        race = request.form.get("race", "").strip()
+        age = request.form.get("age", "").strip()
+        description = request.form.get("description", "").strip()
+        courriel = request.form.get("courriel", "").strip()
+        adresse = request.form.get("adresse", "").strip()
+        ville = request.form.get("ville", "").strip()
+        cp = request.form.get("cp", "").strip()
+
+        if not nom:
+            erreurs["nom"] = "Erreur serveur : Nom requis"
+        if not espece:
+            erreurs["espece"] = "Erreur serveur : Espèce requise"
+        if not race:
+            erreurs["race"] = "Erreur serveur : Race requise"
+        if not age.isdigit() or int(age) < 0:
+            erreurs["age"] = "Erreur serveur : L'âge doit être un nombre positif"
+        if not description:
+            erreurs["description"] = "Erreur serveur : Description requise"
+        if "@" not in courriel or not courriel:
+            erreurs["courriel"] = "Erreur serveur : Courriel invalide"
+        if not adresse:
+            erreurs["adresse"] = "Erreur serveur : Adresse requise"
+        if not ville:
+            erreurs["ville"] = "Erreur serveur : Ville requise"
+        if not cp:
+            erreurs["cp"] = "Erreur serveur : Code postal requis"
+    return render_template("form.html", erreurs=erreurs, form_data=request.form)
