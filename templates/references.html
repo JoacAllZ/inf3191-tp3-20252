@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Références / Bibliographie</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Références et Bibliographie</h1>
+
+        <p>Voici les sources et références utilisées pour la réalisation de ce projet.</p>
+
+        <ul>
+            <li>
+                <strong>Comment link des fichiers statiques</strong>  
+                <a href="https://www.pythontutorials.net/blog/how-to-serve-static-files-in-flask/" target="_blank">
+                https://www.pythontutorials.net/blog/how-to-serve-static-files-in-flask/
+                </a>
+            </li>
+            <li>
+                <strong>Faire une boucle For avec Flask</strong>
+                <a href="https://www.geeksforgeeks.org/python/templating-with-jinja2-in-flask/" target="_blank">
+                https://www.geeksforgeeks.org/python/templating-with-jinja2-in-flask/
+                </a>
+            </li>
+            <li>
+                <strong>Définir une route dynamique dans Flask</strong>
+                <a href="https://flask.palletsprojects.com/en/2.3.x/quickstart/" target="_blank">
+                https://flask.palletsprojects.com/en/2.3.x/quickstart/
+                </a>
+            </li>
+        </ul>
+
+        <a href="{{ url_for('home') }}"  class="btn btn-large">Retour à l'accueil</a>
+    </div>
+</body>
+</html>

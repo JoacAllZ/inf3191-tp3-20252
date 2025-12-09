@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Adoption d'animaux</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+
+        <h1>Adoption d'animaux de compagnie</h1>
+
+        <form action="/search" method="GET" class="barre-recherche">
+            <input type="text" name="q" placeholder="Rechercher un animal..." class="recherche-input">
+            <button type="submit" class="btn">Rechercher</button>
+        </form>
+        <div class="liste-animaux">
+            {% for animal in animaux %}
+            <div class="carte-animal">
+                <a href="/animal/{{ animal.id }}">
+                    <h2>{{ animal.nom }}</h2>
+                    <p><strong>Race :</strong> {{ animal.race or "Non précisée" }}</p>
+                    <p>{{ animal.description }}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="bouton-adoption">
+            <a href="/add" class="btn btn-large">Mise en adoption</a>
+        </div>
+        <div class="reference">
+            <a href="/references">Voir la bibliographie</a>
+        </div>
+    </div>
+</body>
+</html>

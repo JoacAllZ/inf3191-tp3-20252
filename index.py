@@ -34,7 +34,22 @@ def close_connection(exception):
         db.disconnect()
 
 
-@app.route('/')
-def form():
-    # À remplacer par le contenu de votre choix.
-    return render_template('form.html')
+@app.route("/")
+def home():
+    db = get_db()
+
+    animaux = db.get_random_animaux()
+
+    return render_template("index.html", animaux=animaux)
+
+@app.route("/references")
+def references():
+    return render_template("references.html")
+
+@app.route("/animal/<int:animal_id>")
+def animal_detail(animal_id):
+    db = get_db()
+    animal = db.get_animal(animal_id)
+    if animal is None:
+        return "Animal non trouvé", 404
+    return render_template("animal.html", animal=animal)

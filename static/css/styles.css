@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s, text-decoration 0.2s;
+}
+
+a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.barre-recherche {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.recherche-input {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+    border: none;
+}
+
+.btn a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+    color: white;
+}
+
+.btn-large {
+    font-size: 18px;
+    padding: 12px 20px;
+    margin-top: 20px;
+}
+
+.liste-animaux {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.carte-animal {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.carte-animal a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.carte-animal:hover {
+    transform: scale(1.02);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+}
+
+.carte-animal h2 {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.carte-animal p {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.bouton-adoption {
+    text-align: center;
+}
+
+.reference {
+    margin-top: 200px;
+    text-align: center;
+}
+
+.reference a {
+    color: black;
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.reference a:hover {
+    color: #2980b9;
+}
