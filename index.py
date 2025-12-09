@@ -59,10 +59,11 @@ def animal_detail(animal_id):
     return render_template("animal.html", animal=animal)
 
 @app.route("/add", methods=["GET", "POST"])
-def add_animal():
+def add():
     erreurs = {}
     form_data = {}
     db = get_db()
+    ajoutReussi = "None"
 
     if request.method == "POST":
         nom = request.form.get("nom", "").strip()
@@ -93,4 +94,12 @@ def add_animal():
             erreurs["ville"] = "Erreur serveur : Ville requise"
         if not cp:
             erreurs["cp"] = "Erreur serveur : Code postal requis"
-    return render_template("form.html", erreurs=erreurs, form_data=request.form)
+
+        form_data = request.form
+
+        if not erreurs:
+            ajoutReussi = db.add_animal(nom, espece, race, age, description, courriel, adresse, ville, cp)
+            if ajoutReussi != "None":
+                return render_template("add_succes.html")
+
+    return render_template("form.html", erreurs=erreurs, form_data=form_data, ajout=ajoutReussi)
