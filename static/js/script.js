@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         switch(champ.id) {
             case "nom":
+                if (valeur.length < 3 || valeur.length > 20)
+                    valide = false;
+                break;
             case "espece":
             case "race":
             case "adresse":
@@ -17,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (valeur === "") valide = false;
                 break;
             case "age":
-                if (valeur === "" || isNaN(valeur) || Number(valeur) < 0) valide = false;
+                if (valeur === "" || isNaN(valeur) || Number(valeur) < 0 || Number(valeur) > 30) valide = false;
                 break;
             case "courriel":
                 const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

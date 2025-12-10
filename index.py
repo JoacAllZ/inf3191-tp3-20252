@@ -1,4 +1,4 @@
-# Copyright 2024 <Votre nom et code permanent>
+# Copyright 2024 Joachim Alladio-Zerbé -- ALLJ28099800
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
 from flask import Flask
 from flask import render_template
 from flask import request
+from flask import redirect
+from flask import url_for
 from flask import g
 from .database import Database
 
@@ -76,13 +78,13 @@ def add():
         ville = request.form.get("ville", "").strip()
         cp = request.form.get("cp", "").strip()
 
-        if not nom:
+        if not nom or len(nom) < 3 or len(nom) > 20:
             erreurs["nom"] = "Erreur serveur : Nom requis"
         if not espece:
             erreurs["espece"] = "Erreur serveur : Espèce requise"
         if not race:
             erreurs["race"] = "Erreur serveur : Race requise"
-        if not age.isdigit() or int(age) < 0:
+        if not age.isdigit() or int(age) < 0 or int(age) > 30:
             erreurs["age"] = "Erreur serveur : L'âge doit être un nombre positif"
         if not description:
             erreurs["description"] = "Erreur serveur : Description requise"
@@ -100,6 +102,9 @@ def add():
         if not erreurs:
             ajoutReussi = db.add_animal(nom, espece, race, age, description, courriel, adresse, ville, cp)
             if ajoutReussi != "None":
-                return render_template("add_succes.html")
-
+                return redirect(url_for("add_succes"))
     return render_template("form.html", erreurs=erreurs, form_data=form_data, ajout=ajoutReussi)
+
+@app.route("/add_succes")
+def add_succes():
+    return render_template("add_succes.html")

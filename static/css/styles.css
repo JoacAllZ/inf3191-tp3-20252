@@ -268,4 +268,8 @@ a:hover {
         display: block ;
         box-sizing: border-box;
     }
+
+    .container {
+        flex-direction: column;
+    }
 }
