@@ -1,4 +1,3 @@
-export FLASK_APP=index.py
 ifeq ($(OS),Windows_NT)
     PYTHON = venv\Scripts\python.exe
     PIP = venv\Scripts\pip.exe
@@ -12,7 +11,7 @@ endif
 .PHONY: run install venv clean
 
 run:
-	$(PYTHON) -m flask run
+	$(PYTHON) -m flask run --app index.py
 
 install: venv
 	$(PIP) install -r requirements.txt
