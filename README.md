@@ -10,7 +10,7 @@ Afin de pouvoir installer correctement l'application il faut s'assurer d'avoir l
 
 - `make`
 - `python` version 3
-- `python3\[\#version\]-venv` pour environnement linux
+- `python3[#version]-venv` pour environnement linux
 
 Une fois le répertoire cloner aller dans la racine et installer l'environnement virtuel python :
 
