@@ -2,12 +2,12 @@ ifeq ($(OS),Windows_NT)
     PYTHON = venv\Scripts\python.exe
     PIP = venv\Scripts\pip.exe
     CLEANEXEC = rmdir /s /q venv
-		PYTHON_GLOBAL = python
+	PYTHON_GLOBAL = python
 else
     PYTHON = venv/bin/python3
     PIP = venv/bin/pip
     CLEANEXEC = rm -rf venv
-		PYTHON_GLOBAL = python3
+	PYTHON_GLOBAL = python3
 endif
 
 .PHONY: run install venv clean
