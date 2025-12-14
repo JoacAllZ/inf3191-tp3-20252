@@ -42,11 +42,18 @@ def home():
     terme = request.args.get("q", "").strip()
 
     if terme:
-        animaux = db.search_animaux(terme)
-    else:
-        animaux = db.get_random_animaux()
+        return redirect(url_for("resultat", q=terme))
 
+    animaux = db.get_random_animaux()
     return render_template("index.html", animaux=animaux)
+
+@app.route("/resultat")
+def resultat():
+    db = get_db()
+    terme = request.args.get("q").strip()
+    animaux = db.search_animaux(terme)
+    return render_template("index.html", animaux=animaux)
+
 
 @app.route("/references")
 def references():

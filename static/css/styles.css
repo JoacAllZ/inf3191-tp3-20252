@@ -72,6 +72,10 @@ a:hover {
     text-decoration: none;
 }
 
+.btn-horizontale {
+    margin: 0px 0px 0px 10px;   
+}
+
 .btn:hover {
     background-color: #2980b9;
     color: white;

@@ -14,6 +14,7 @@
         <form action="/" method="GET" class="barre-recherche">
             <input type="text" name="q" placeholder="Rechercher un animal..." class="recherche-input">
             <button type="submit" class="btn">Rechercher</button>
+            <a href="{{ url_for('home') }}"  class="btn btn-horizontale">Afficher 5 animaux aléatoire</a>
         </form>
         <div class="liste-animaux">
             {% for animal in animaux %}
