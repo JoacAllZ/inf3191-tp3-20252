@@ -11,7 +11,7 @@ endif
 .PHONY: run install venv clean
 
 run:
-	$(PYTHON) -m flask run --app index.py
+	$(PYTHON) -m flask --app index run
 
 install: venv
 	$(PIP) install -r requirements.txt
