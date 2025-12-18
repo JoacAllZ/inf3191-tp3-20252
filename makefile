@@ -10,9 +10,9 @@ else
 	PYTHON_GLOBAL = python3
 endif
 
-.PHONY: run install venv clean
+.PHONY: run install clean
 
-run:
+run: install
 	$(PYTHON) -m flask --app index run
 
 install: venv

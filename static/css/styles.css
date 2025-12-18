@@ -282,9 +282,9 @@ input.uppercase {
 .btn-flottant {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    left: 20px;
     padding: 15px 20px;
-    border-radius: 50%;
+    border-radius: 6px;
     background-color: #3498db;
     color: white;
     font-size: 18px;
@@ -315,5 +315,9 @@ input.uppercase {
 
     .container {
         flex-direction: column;
+    }
+
+    .btn-flottant {
+        right: 20px;
     }
 }
