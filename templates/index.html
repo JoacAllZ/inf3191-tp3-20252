@@ -14,8 +14,14 @@
         <form action="/" method="GET" class="barre-recherche">
             <input type="text" name="q" placeholder="Rechercher un animal..." class="recherche-input">
             <button type="submit" class="btn">Rechercher</button>
-            <a href="{{ url_for('home') }}"  class="btn btn-horizontale">Afficher 5 animaux aléatoire</a>
         </form>
+        <div class="bouton-milieu">
+            <a href="{{ url_for('home') }}"  class="btn btn-large">Afficher 5 animaux aléatoire</a>
+            <a href="/liste" class="btn btn-large">Consulter la liste complète</a>
+        </div>
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% else %}
         <div class="liste-animaux">
             {% for animal in animaux %}
             <div class="carte-animal">
@@ -27,7 +33,8 @@
             </div>
             {% endfor %}
         </div>
-        <div class="bouton-adoption">
+        {% endif %}
+        <div class="bouton-milieu">
             <a href="/add" class="btn btn-large">Mise en adoption</a>
         </div>
         <div class="reference">

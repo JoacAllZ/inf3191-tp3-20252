@@ -6,19 +6,22 @@
 
 # Installation
 
-Afin de pouvoir installer correctement l'application il faut s'assurer d'avoir les dépendances suivantes :
+Afin de pouvoir installer correctement l'application il faut s'assurer d'avoir 
+les **dépendances** suivantes :
 
 - `make`
 - `python` version 3
 - `python3[#version]-venv` pour environnement linux
 
-Une fois le répertoire cloner aller dans la racine et installer l'environnement virtuel python :
+Une fois le répertoire cloner aller dans la racine et installer l'environnement
+ virtuel python :
 
 ```sh
 make install
 ```
 
-Il est possible de nettoyer l'environnemnt python si l'installation est corrompue avec :
+Il est possible de nettoyer l'environnemnt python si l'installation est 
+corrompue avec :
 
 ```sh
 make clean

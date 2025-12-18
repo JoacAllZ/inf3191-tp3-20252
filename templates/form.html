@@ -62,7 +62,7 @@
 
         <div class="champ">
             <label for="cp">Code postal</label>
-            <input type="text" id="cp" name="cp" value="{{ form_data.cp or '' }}">
+            <input type="text" class="uppercase" id="cp" name="cp" value="{{ form_data.cp or '' }}">
             <div class="message-erreur hidden" id="cpErr">Le code postal doit être valide.</div>
         </div>
         {% for erreur in erreurs %}

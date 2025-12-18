@@ -52,7 +52,10 @@ def resultat():
     db = get_db()
     terme = request.args.get("q").strip()
     animaux = db.search_animaux(terme)
-    return render_template("index.html", animaux=animaux)
+    if not animaux:
+        message = "Aucun animal trouvé selon la recherche"
+        return render_template("index.html", animaux=animaux, message=message)
+    return render_template("index.html", animaux=animaux, message=None)
 
 
 @app.route("/references")
@@ -66,6 +69,15 @@ def animal_detail(animal_id):
     if animal is None:
         return "Animal non trouvé", 404
     return render_template("animal.html", animal=animal)
+
+@app.route("/liste")
+def liste_animal():
+    db = get_db()
+    animaux = db.get_animaux()
+    if not animaux:
+        message = "Aucun animal en adoption pour le moment."
+        return render_template("listeanimal.html", animaux=[], message=message)
+    return render_template("listeanimal.html", animaux=animaux, message=None)
 
 @app.route("/add", methods=["GET", "POST"])
 def add():

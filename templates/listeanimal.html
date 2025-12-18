@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste animaux - Adoption</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    {% if message %}
+        <p class="message">{{ message }}</p>
+    {% else %}
+    {% for animal in animaux %}
+    <div class="container-form">
+        <h1>{{ animal.nom }}</h1>
+        <p><strong>Espèce :</strong> {{ animal.espece }}</p>
+        <p><strong>Race :</strong> {{ animal.race }}</p>
+        <p><strong>Âge :</strong> {{ animal.age }} ans</p>
+        <p><strong>Description :</strong> {{ animal.description }}</p>
+        <p><strong>Adresse :</strong> {{ animal.adresse }}, {{ animal.ville }}, {{ animal.cp }}</p>
+        <p><strong>Courriel :</strong> <a href="mailto:{{ animal.courriel }}">{{ animal.courriel }}</a></p>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <a href="/" class="btn btn-flottant">Retour à l'accueil</a>
+</body>
+</html>
+
